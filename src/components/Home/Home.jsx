@@ -2,6 +2,7 @@ import React from 'react';
 import Subscribe from '../../utilities/Subscribe';
 import HomeArticles from './HomeArticles';
 import HomeSlider from './HomeSlider';
+import HomeTeams from './HomeTeams';
 
 
 const Home = ()=>
@@ -10,6 +11,7 @@ const Home = ()=>
        <HomeSlider/>
        <Subscribe/>
        <HomeArticles/>
+       <HomeTeams/>
     </div>)
 }
 

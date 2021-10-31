@@ -60,7 +60,11 @@ const HomeArticles = () =>
 
     return( 
         <div className='container'>
-            {ShowPost()}
+            {
+                posts ?
+                ShowPost():
+                null
+            }
         </div>
     )
 }
