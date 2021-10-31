@@ -1,23 +1,26 @@
-import {React,useState,useEffect} from 'react';
+import React from 'react';
 import axios from 'axios';
 import { TEAMS_PATH } from '../../utilities/Path';
-const HomeTeams = ()=>
-{
 
-    const [team, setTeam] = useState()
-
-    useEffect(() => {
-        const fetchTeam = async()=>
-        {
-            const res=await axios.get(`${TEAMS_PATH}?poll=true&_sort=count&_order=desc`)
-            setTeam(res.data)
-        }
-        fetchTeam()
-    },[])
-
-    const showData = () =>
+class HomeTeams extends React.Component {
+    constructor(props)
     {
-        return team.map((item,i)=>
+        super(props)
+        this.state={
+            team:[]
+        }
+    }
+
+
+    async componentDidMount() {
+        const res=await axios.get(`${TEAMS_PATH}?poll=true&_sort=count&_order=desc`)
+       this.setState({team:res.data})
+        console.log(this.state.team);
+    }
+    
+     showData = () =>
+    {
+        return this.state.team.map((item,i)=>
         {
             return (
                 <div
@@ -31,18 +34,20 @@ const HomeTeams = ()=>
             )
         })
     }
+    
 
-    return(
-        <>
-        <div className='home_poll'>
+    render() { 
+        return <div>
+               <div className='home_poll'>
             <h4>
                 Which one be champion ?😎
             </h4>
             <div className='poll_container'>
-                {showData()}
+                {this.showData()}
             </div>
         </div>
-        </>
-    )
+        </div>;
+    }
 }
-export default HomeTeams
+ 
+export default HomeTeams;
