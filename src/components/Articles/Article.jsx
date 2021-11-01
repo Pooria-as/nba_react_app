@@ -19,10 +19,7 @@ const Article = (props)=>
     }, [props])
 
 
-    const ShowPosts=()=>
-    {
-
-    }
+ 
 
     return (
         <div className='container'>
@@ -49,9 +46,7 @@ const Article = (props)=>
                 dangerouslySetInnerHTML={{
                     __html : post.content
                 }}
-                
                 >
-               
                 </div>
             </div>
 
